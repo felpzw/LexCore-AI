@@ -1,85 +1,71 @@
-# 📚 Jurídico IA: Plataforma de Gestão Jurídica com IA Integrada
+# LexCore AI
 
-Bem-vindo ao **Jurídico IA**, uma plataforma inovadora desenvolvida para auxiliar profissionais e estudantes do direito. Este projeto utiliza o framework web Rust **Tuono** no backend, **React/Next.js** no frontend e integra a **Inteligência Artificial Ollama** para otimizar diversas tarefas jurídicas.
+Legal case management with AI-assisted document analysis.
 
-## 🚀 Funcionalidades Principais
+LexCore AI brings clients, legal cases, documents, and reports into one application. Built with Rust, Tuono, React, and PostgreSQL, it connects to Ollama to answer questions about uploaded PDFs.
 
-* **Gestão de Clientes:** Cadastro, visualização, edição e exclusão de clientes (Pessoa Física e Jurídica).
-* **Gestão de Documentos:** Upload, visualização, download, edição e exclusão de documentos (especialmente PDFs) vinculados a casos.
-* **Gestão de Casos Jurídicos:** Cadastro detalhado de casos, com vinculação a clientes, advogados, status, varas e categorias, exibindo informações completas.
-* **IA Integrada (Ollama):** Faça perguntas sobre o conteúdo de seus documentos PDFs, utilizando modelos de Linguagem Grande (LLM) rodando localmente com Ollama para obter respostas contextuais.
-* **Relatórios Visuais:** Geração de relatórios que relacionam dados de clientes, casos e documentos, apresentados em gráficos para insights rápidos.
-* **Ferramentas de Desenvolvimento:** Página de configurações para gerenciar o estado do banco de dados (limpar, iniciar, popular) de forma fácil durante o desenvolvimento.
+The project is a development prototype. Its interface and domain identifiers use Portuguese; this documentation uses English.
 
-## ⚙️ Como Iniciar o Projeto
+## Capabilities
 
-Este projeto utiliza **Docker** para gerenciar o banco de dados PostgreSQL e a instância do Ollama, simplificando o setup do ambiente.
+- **Client management:** create, view, update, and delete individual and corporate client records.
+- **Case management:** associate cases with clients, lawyers, statuses, courts, and categories.
+- **Document management:** upload, view, download, update, and delete documents linked to cases.
+- **AI-assisted PDF analysis:** select an available Ollama model and ask questions using text extracted from a stored PDF.
+- **Reports:** visualize documents by client and case, cases by lawyer and status, and hearings by client and lawyer.
+- **Development utilities:** initialize the database schema, load sample records, and reset a disposable database.
 
-### **Pré-requisitos**
+## Technology
 
-* Docker e Docker Compose instalados.
-* Rust e Cargo instalados (para o desenvolvimento do backend).
-* Node.js e npm/yarn instalados (para o desenvolvimento do frontend).
+| Layer | Implementation |
+| --- | --- |
+| Application framework | Tuono 0.19.7 |
+| Backend | Rust, Tokio, `tokio-postgres`, Reqwest |
+| Frontend | React 19, TypeScript, Recharts |
+| Database | PostgreSQL 16 |
+| AI inference | Ollama |
+| Local services | Docker Compose |
 
-### **Passo a Passo**
+## Get started
 
-1.  **Clone o Repositório:**
-    ```bash
-    git clone https://github.com/felpzw/Projeto-Banco-de-Dados
-    cd Projeto-Banco-de-Dados
-    ```
-    
-2.  **Instalar Pacotes Node**
-    ```
-    npm install
-    ```
-    
-2.  **Configurar Variáveis de Ambiente:**
-    Crie um arquivo chamado `var.env` na raiz do projeto (mesmo diretório do `Cargo.toml` e `docker-compose.yml`).
-    Insira as seguintes linhas, ajustando conforme necessário (especialmente `OLLAMA_API_URL` se seu Ollama não for localhost):
+Follow the [setup and environment guide](docs/SETUP_AND_ENVIRONMENT.md) for prerequisites, configuration, model installation, and database initialization.
 
-    ```
-    DATABASE_URL=host=localhost port=5432 user=usuario password=1234 dbname=banco_de_dados
-    OLLAMA_API_URL=http://localhost:11434/
-    ```
-    **Observação sobre `OLLAMA_API_URL`:** Se o seu Ollama estiver rodando em um servidor diferente ou via um proxy, use a URL base desse servidor (ex: `https://ollama.vlab.ufsc.br/`).
+After completing the prerequisites and configuring `var.env`, run from the repository root:
 
-3.  **Subir o Banco de Dados e o Ollama com Docker Compose:**
-    Este comando iniciará os contêineres do PostgreSQL e do Ollama em segundo plano.
-    ```bash
-    docker-compose up -d
-    ```
-    Aguarde alguns instantes para que o PostgreSQL e o Ollama inicializem completamente.
+```bash
+npm ci
+docker compose up -d
+tuono dev
+```
 
-4.  **Instalar Modelos do Ollama (Manual):**
-    Você precisa baixar os modelos que deseja usar no Ollama. Acesse a interface do Ollama (geralmente `http://localhost:11434` ou a URL configurada) ou use o comando `ollama run` para baixar um modelo.
-    Exemplo para baixar o Llama2 (ou outro modelo de sua escolha):
-    ```bash
-    docker exec -it ollama ollama run llama2
-    # Você pode sair digitando /bye ou ctrl+d
-    ```
-    Repita para outros modelos como `qwen2.5:7b` ou `mistral-large:123b` se desejar usá-los. Certifique-se de que os modelos referenciados no frontend (`qwen2.5:7b` no exemplo do `curl` de teste) estejam instalados.
+Open `http://localhost:3000`. On a fresh database, visit `/configuracoes` to initialize the schema and load sample records before using the management pages.
 
-5.  **Iniciar o Projeto Tuono:**
-    Este comando compilará o backend Rust e iniciará o servidor de desenvolvimento Tuono/React.
-    ```bash
-    tuono dev
-    ```
-    O projeto estará acessível em `http://localhost:3000` no seu navegador.
+The database reset action drops **every table in the connected database's public schema**. Use it only with a disposable development database.
 
-## 🛠️ Ferramentas de Desenvolvimento (Página de Configurações)
+## Documentation
 
-Acesse `http://localhost:3000/configuracoes` para gerenciar o estado do seu banco de dados durante o desenvolvimento:
+| Guide | Contents |
+| --- | --- |
+| [Documentation index](docs/README.md) | Reading order and documentation maintenance |
+| [Project overview](docs/PROJECT_OVERVIEW.md) | Architecture, modules, data flow, and current limitations |
+| [Setup and environment](docs/SETUP_AND_ENVIRONMENT.md) | Local installation, configuration, and troubleshooting |
+| [Git workflow](docs/GITFLOW.md) | Branching, pull requests, releases, and hotfixes |
+| [Commit standards](docs/COMMIT_STANDARDS.md) | Commit format, types, scopes, and examples |
 
-* **LIMPAR DB (DEBUG):** Executa `DELETE /api/clean`. **Cuidado:** Apaga **TODOS** os dados das tabelas.
-* **INICIAR DB (DEBUG):** Executa `POST /api/init`. Cria a estrutura de tabelas no banco de dados.
-* **POPULAR DB (DEBUG):** Executa `PUT /api/populate_db`. Insere dados fictícios (clientes, advogados, casos, etc.) no banco, atualizando os existentes se houver conflito.
+## Repository layout
 
-**Fluxo Recomendado para Teste/Desenvolvimento:**
-1.  `LIMPAR DB (DEBUG)`
-2.  `INICIAR DB (DEBUG)`
-3.  `POPULAR DB (DEBUG)`
+```text
+docs/                  Project and contributor documentation
+src/app.rs             Application startup and environment loading
+src/lib.rs             Shared database and query helpers
+src/routes/            React pages and Rust route handlers
+src/routes/api/        Backend API endpoints
+src/components/        Reusable React components
+src/styles/            Application styles
+docker-compose.yml     PostgreSQL and Ollama services
+var.env                Local runtime configuration (currently tracked)
+```
 
-Isso garantirá que seu banco de dados esteja sempre em um estado consistente para testes.
+## Contributing
 
----
+Use the [Git workflow](docs/GITFLOW.md) and [commit standards](docs/COMMIT_STANDARDS.md). Keep changes focused, update the relevant documentation, and describe the checks actually performed in each pull request.
