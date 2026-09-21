@@ -4,6 +4,8 @@
 
 LexCore AI is a legal management prototype for organizing client records, cases, and documents, with an Ollama integration for questions about PDF content. The application combines relational data management with document analysis and visual reports.
 
+The source is maintained at [felpzw/LexCore-AI](https://github.com/felpzw/LexCore-AI) under the [MIT license](../LICENSE). See [repository identity](REPOSITORY.md) for the project's previous names and open-source attribution.
+
 ## Implemented modules
 
 | Module | Page | Behavior |

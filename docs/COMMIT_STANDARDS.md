@@ -57,11 +57,6 @@ This is a message example, not a description of the current API.
 
 Keep each commit coherent and independently reviewable. Separate unrelated fixes, generated artifacts, and formatting changes. Do not include private environment values, downloaded models, or local database files.
 
-The LexCore AI documentation work can be organized as:
-
-1. `docs: add structured project documentation` — add the guides under `docs/`.
-2. `docs: rewrite README for LexCore AI` — replace the root introduction and link the guides.
-
-Visible application branding belongs in a separate commit, for example `feat(ui): rename the application to LexCore AI`.
+For example, use `docs: document repository identity and contribution workflow` for a coherent documentation update. Keep application behavior changes in separate commits when they can be reviewed independently.
 
 Before committing, inspect the staged diff and run checks appropriate to the change. Describe validation outcomes in the pull request, distinguishing completed checks from skipped ones.
