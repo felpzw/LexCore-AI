@@ -26,10 +26,10 @@ export default function IndexPage({
   return (
     <div className="homepage-container">
       <section className="hero-section">
-        <h1 className="hero-title">Bem-vindo ao LawIA</h1>
+        <h1 className="hero-title">Bem-vindo ao LexCore AI</h1>
         <h2 className="hero-subtitle">{}</h2> {/* Keep this if there's a dynamic subtitle expected */}
         <p className="hero-description">
-          O LawIA é uma plataforma inovadora que utiliza inteligência artificial para auxiliar profissionais e estudantes do direito.
+          O LexCore AI é uma plataforma inovadora que utiliza inteligência artificial para auxiliar profissionais e estudantes do direito.
           Descubra como a tecnologia pode simplificar pesquisas jurídicas, automatizar tarefas e oferecer insights valiosos para o seu dia a dia.
         </p>
         <button className="cta-button" onClick={handleCtaClick}>Comece Agora!</button>
@@ -59,7 +59,7 @@ export default function IndexPage({
       </section>
 
       <section className="stats-section">
-        <h3 className="section-title">LawIA em Números</h3>
+        <h3 className="section-title">LexCore AI em Números</h3>
         <div className="stats-grid">
           <div className="stat-item">
             <span className="stat-number">10K+</span>

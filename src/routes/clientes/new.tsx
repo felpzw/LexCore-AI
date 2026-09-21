@@ -93,7 +93,7 @@ export default function NewClientPage(): JSX.Element {
   return (
     <div className="new-client-page-container">
       <h1 className="page-title">Adicionar Novo Cliente</h1>
-      <p className="page-description">Preencha os dados abaixo para cadastrar um novo cliente no sistema LawIA.</p>
+      <p className="page-description">Preencha os dados abaixo para cadastrar um novo cliente no sistema LexCore AI.</p>
 
       <form onSubmit={handleSubmit} className="client-form">
         <div className="form-group">
