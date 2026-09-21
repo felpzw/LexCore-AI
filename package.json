@@ -1,7 +1,16 @@
 {
   "name": "tuono-app",
-  "description": "Basic tuono application",
+  "description": "Legal case management with AI-assisted PDF analysis, built with Rust, Tuono, React, PostgreSQL, and Ollama.",
+  "homepage": "https://github.com/felpzw/LexCore-AI#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felpzw/LexCore-AI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felpzw/LexCore-AI/issues"
+  },
   "version": "0.0.1",
+  "license": "MIT",
   "dependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

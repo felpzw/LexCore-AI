@@ -6,8 +6,10 @@ This directory describes the application, local development environment, and con
 
 1. [Project overview](PROJECT_OVERVIEW.md): understand the product, architecture, and implemented features.
 2. [Setup and environment](SETUP_AND_ENVIRONMENT.md): install dependencies, configure services, and initialize a local database.
-3. [Git workflow](GITFLOW.md): prepare a branch and submit a focused pull request.
-4. [Commit standards](COMMIT_STANDARDS.md): write consistent, reviewable commit messages.
+3. [Repository identity and About](REPOSITORY.md): find canonical links, project history, licensing, and GitHub metadata.
+4. [Contributing](../CONTRIBUTING.md): report issues and prepare contributions.
+5. [Git workflow](GITFLOW.md): create branches from `develop` and submit focused pull requests back to `develop`.
+6. [Commit standards](COMMIT_STANDARDS.md): write consistent, reviewable commit messages.
 
 For a concise introduction, see the [project README](../README.md).
 

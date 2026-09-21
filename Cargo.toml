@@ -2,6 +2,11 @@
 name = "tuono-app"
 version = "0.0.1"
 edition = "2024"
+description = "Legal case management with AI-assisted PDF analysis, built with Rust, Tuono, React, PostgreSQL, and Ollama."
+repository = "https://github.com/felpzw/LexCore-AI"
+homepage = "https://github.com/felpzw/LexCore-AI#readme"
+readme = "README.md"
+license = "MIT"
 
 [[bin]]
 name = "tuono"
